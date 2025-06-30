@@ -1,1 +1,10 @@
 @use "../abstracts/variables" as variable;
+
+.btn {
+    background-color: variable.$button;
+    font-family: variable.$font-primary;
+    color: variable.$white;
+    font-size: 18px;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+}

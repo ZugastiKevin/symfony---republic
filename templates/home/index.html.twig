@@ -1,56 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
-
-    <header class="main-header">
-        <div class="flag"</div>
-        <div class="logo-burger">
-        <button class="burger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        </div>
-        <div
-            <ul>
-            <li><a href="#login">Se Connecter</a></li>
-            <li><a href="#language">Langue</a></li>
-            </ul>
-        </div>
-        <div
-        <nav>
-            <ul>
-            <li><a href="#home">Page d'aceuil</a></li>
-            <li><a href="#valeurs">Les valeurs</a></li>
-            <li><a href="#jeux">Jeux</a></li>
-            <li><a href="quiz">Quiz</a></li>
-            </ul>
-        </nav>
-        </div>
-    </header>
-    <div
-        <h1>Les valeurs de la république</h1>
-        <div class="photo-republique">
-            <img src="" alt="Photo République">
-        </div>
-    </div>
-    <div
-        <h2>Description</h2>
-        <div class="crapeau français">
-            <img src="" alt="Photo Drapeau">
-        </div>
-    </div>
-    <div
-        <h2>Notre fameux quizz</h2>
-        <div class="crapeau français">
-            <img src="" alt="Photo Drapeau">
-            <p>Ce quiz a pour but de tester vos connaissances concernant les valeurs essentielles de la République.</p>
-            <a href="#quiz" class="bouton">Quiz</a>
-        </div>
-    </div>
-  
-
-
+	<section id="home">
+		<div>
+			<h1>Les valeurs de la république</h1>
+			<div class="photo-republique">
+				<img src="" alt="Photo République">
+			</div>
+		</div>
+		<div>
+			<h2>Description</h2>
+			<div class="drapeau français">
+				<img src="" alt="Photo Drapeau">
+			</div>
+		</div>
+		<div>
+			<h2>Notre fameux quizz</h2>
+			<div class="drapeau français">
+				<img src="" alt="Photo Drapeau">
+				<p>Ce quiz a pour but de tester vos connaissances concernant les valeurs essentielles de la République.</p>
+				<a href="#quiz" class="bouton">Quiz</a>
+			</div>
+		</div>
+	</section>
 {% endblock %}

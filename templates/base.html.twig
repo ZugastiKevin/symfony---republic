@@ -1,74 +1,96 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        <header id="header">
-        <nav class="navbar">
-            <ul class="links-container">
-                <li class="nav-items"><a href="{{ path('home') }}" data-i18n="nav_home" ></a></li>
-                <li class="nav-items"><a href="" data-i18n="nav_lorem" >Quia.</a></li>
-                <li class="nav-items"><a href="{{ path('mini_games')}}" data-i18n="nav_minigames" >Je teste mes compétences</a></li>
-                <li class="nav-items"><a href="" data-i18n="nav_ipsum">Expedita!</a></li>
-                <li class="nav-items"><a href="" data-i18n="nav_dolor">Libero.</a></li>
-            {% if app.user %}
-                <li><a href="{{ path('app_logout') }}" class="menu-items" data-i18n="nav_disconnect"> Se déconnecter</a></li>
-            {% else %}
-                <li><a href="{{ path('create_user') }}" class="menu-items" data-i18n="nav_register"> S'inscrire</a></li>
-                <li><a href="{{ path('app_login') }}" class="menu-items" data-i18n="nav_connect"> Se connecter</a></li>
-            {% endif %}
-            </ul>
-            <div class="lang-switcher">
-                <button class="lang-toggle">Français ⌄</button>
-                <ul class="lang-options">
-                    <li data-lang="fr">Français</li>
-                    <li data-lang="en">English</li>
-                </ul>
-            </div>
-        </nav>
-        </header>
-        <main>
-            {% block body %}{% endblock %}
-        </main>
-        
-    </body>
-    <footer class="footer">
-    
-    </footer>
-    <style>
-.lang-switcher {
-    position: relative;
-    display: inline-block;
-    z-index: 200;
-}
-.lang-options {
-    display: none;
-    position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    z-index: 300;
-    margin-top: 5px;
-    min-width: 120px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    right: 5;
-}
-.lang-switcher.open .lang-options {
-    display: block;
-}
-    </style>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		<header id="header">
+			<nav class="navbar">
+				<div class="nav-logo">
+					<a href="{{ path('home') }}"><img src="{{ asset('assets/img/') }}" alt="logo"></a>
+				</div>
+				<div class="nav-container">
+					<ul class="first-nav">
+						{% if app.user %}
+							<li>
+								<a href="{{ path('app_logout') }}" class="menu-items btn" data-i18n="nav_disconnect">
+									Se déconnecter</a>
+							</li>
+						{% else %}
+							<li>
+								<a href="{{ path('create_user') }}" class="menu-items btn" data-i18n="nav_register">
+									S'inscrire</a>
+							</li>
+							<li>
+								<a href="{{ path('app_login') }}" class="menu-items btn" data-i18n="nav_connect">
+									Se connecter</a>
+							</li>
+						{% endif %}
+					</ul>
+					<div class="lang-switcher">
+						<button class="lang-toggle">Français ⌄</button>
+						<ul class="lang-options">
+							<li data-lang="fr">Français</li>
+							<li data-lang="en">English</li>
+						</ul>
+					</div>
+				</div>
+				<ul class="second-nav">
+					<li class="nav-item">
+						<a href="{{ path('home') }}" data-i18n="nav_home" class="btn">Acceuil</a>
+						<a href="{{ path('home') }}" data-i18n="nav_home" class="btn">quiz</a>
+						<a href="{{ path('home') }}" data-i18n="nav_home" class="btn">jeux</a>
+					</li>
+
+				</ul>
+
+
+			</nav>
+		</header>
+		<main>
+			{% block body %}{% endblock %}
+		</main>
+
+	</body>
+	<footer class="footer"></footer>
+	<style>
+		.lang-switcher {
+			position: relative;
+			display: inline-block;
+			z-index: 200;
+		}
+		.lang-options {
+			display: none;
+			position: absolute;
+			background: #fff;
+			border: 1px solid #ccc;
+			z-index: 300;
+			margin-top: 5px;
+			min-width: 120px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			right: 5;
+		}
+		.lang-switcher.open .lang-options {
+			display: block;
+		}
+	</style>
 </html>

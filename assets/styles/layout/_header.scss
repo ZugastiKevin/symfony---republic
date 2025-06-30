@@ -1,41 +1,104 @@
 @use "../abstracts/variables" as variable;
 
+
+header {
+    background-color: variable.$header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    .navbar {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        .nav-logo {}
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+
+            .first-nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        .second-nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 85px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            margin: 0;
+            padding: 1rem 0;
+            background-color: variable.$header;
+
+            .nav-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5rem;
+            }
+        }
+
+
+    }
+}
+
 @keyframes dropdown-show {
     0% {
         opacity: 0;
-    };
+    }
+
+    ;
+
     100% {
         opacity: 1;
-    };
-};
+    }
+
+    ;
+}
+
+;
 
 @keyframes dropdown-dont-show {
     0% {
         opacity: 1;
-    };
+    }
+
+    ;
+
     100% {
         opacity: 0;
-    };
-};
+    }
 
-#header {
-    
+    ;
 }
 
-@media screen and (min-width:1921px) {  
-    #header {
-        
-    }
+;
+
+#header {}
+
+@media screen and (min-width:1921px) {
+    #header {}
 }
 
-@media screen and (max-width:1250px) {  
-    #header {
-        
-    }
+@media screen and (max-width:1250px) {
+    #header {}
 }
 
-@media screen and (max-width:768px) {  
-    #header {
-        
-    }
+@media screen and (max-width:768px) {
+    #header {}
 }
