@@ -1,45 +1,22 @@
-// ajouter dans le tableau les mots et leurs définition afin de les ajouter au jeux
 const data = [
-    {
-        word: "Liberté",
-        definition: "Droit de faire ce que l’on veut dans le respect de la loi et d’autrui."
-    },
-    {
-        word: "Égalité",
-        definition: "Principe selon lequel tous les citoyens ont les mêmes droits et devoirs."
-    },
-    {
-        word: "Fraternité",
-        definition: "Solidarité et entraide entre les citoyens."
-    },
-    {
-        word: "Laïcité",
-        definition: "Principe de séparation des religions et de l’État."
-    },
-    {
-        word: "Citoyen",
-        definition: "Personne qui appartient à un pays et qui a des droits et des devoirs."
-    },
-    {
-        word: "République",
-        definition: "Régime politique où le pouvoir appartient au peuple et où les dirigeants sont élus."
-    },
-    {
-        word: "Démocratie",
-        definition: "Système où le peuple participe aux décisions par le vote."
-    },
-    {
-        word: "Droit",
-        definition: "Règle qui fixe ce que l’on peut faire ou ne pas faire."
-    },
-    {
-        word: "Devise",
-        definition: "Phrase courte qui exprime les valeurs d’un pays."
-    },
-    {
-        word: "Constitution",
-        definition: "Texte qui organise le fonctionnement de l’État et fixe les droits des citoyens."
-    }
+    { word: "minigames_word_liberte", definition: "minigames_def_liberte" },
+    { word: "minigames_word_egalite", definition: "minigames_def_egalite" },
+    { word: "minigames_word_fraternite", definition: "minigames_def_fraternite" },
+    { word: "minigames_word_laicite", definition: "minigames_def_laicite" },
+    { word: "minigames_word_citoyen", definition: "minigames_def_citoyen" },
+    { word: "minigames_word_republique", definition: "minigames_def_republique" },
+    { word: "minigames_word_democratie", definition: "minigames_def_democratie" },
+    { word: "minigames_word_droit", definition: "minigames_def_droit" },
+    { word: "minigames_word_devise", definition: "minigames_def_devise" },
+    { word: "minigames_word_constitution", definition: "minigames_def_constitution" }
+];
+
+// Clés pour les questions vrai/faux (pour traduction dynamique)
+const vfQuestionsKeys = [
+    { q: "vf_q1", a: true },
+    { q: "vf_q2", a: false },
+    { q: "vf_q3", a: true },
+    { q: "vf_q4", a: false }
 ];
 
 let shuffledWords = [];
@@ -47,8 +24,20 @@ let shuffledDefinitions = [];
 let matches = {};
 let score = 0;
 
+// --- VRAI OU FAUX ---
+let vfIndex = 0, vfScore = 0;
+let vfFinished = false;
+
 function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
+}
+
+function getLang() {
+    return localStorage.getItem('lang') || 'fr';
+}
+
+function t(key) {
+    return (typeof window.translations !== "undefined" && window.translations[getLang()] && window.translations[getLang()][key]) ? window.translations[getLang()][key] : `[${key}]`;
 }
 
 function renderGame() {
@@ -57,49 +46,54 @@ function renderGame() {
     shuffledDefinitions = shuffle([...selection]);
     matches = {};
     score = 0;
-    document.getElementById('result').innerText = '';
-    document.getElementById('restart').style.display = 'none';
+    const resultElem = document.getElementById('result');
+    const restartElem = document.getElementById('restart');
+    if (resultElem) resultElem.innerText = '';
+    if (restartElem) restartElem.style.display = 'none';
 
     // affichage des mots (zones de drag)
     const wordsDiv = document.getElementById('words');
-    wordsDiv.innerHTML = '<strong>Mots :</strong><br>';
-    shuffledWords.forEach((item, idx) => {
-        const span = document.createElement('span');
-        span.innerText = item.word;
-        span.draggable = true;
-        span.id = 'word-' + idx;
-        span.className = 'draggable-word';
-        span.ondragstart = (e) => {
-            e.dataTransfer.setData('text/plain', item.word);
-        };
-        wordsDiv.appendChild(span);
-    });
+    if (wordsDiv) {
+        wordsDiv.innerHTML = '<strong>' + t('minigames_1_label') + '</strong><br>';
+        shuffledWords.forEach((item, idx) => {
+            const span = document.createElement('span');
+            span.innerText = t(item.word);
+            span.draggable = true;
+            span.id = 'word-' + idx;
+            span.className = 'draggable-word';
+            span.ondragstart = (e) => {
+                e.dataTransfer.setData('text/plain', item.word);
+            };
+            wordsDiv.appendChild(span);
+        });
+    }
 
     // affiche les def (zones de drop)
     const defsDiv = document.getElementById('definitions');
-    defsDiv.innerHTML = '<strong>Définitions :</strong>';
-    shuffledDefinitions.forEach((item, idx) => {
-        const div = document.createElement('div');
-        div.className = 'dropzone';
-        div.id = 'def-' + idx;
-        div.ondragover = (e) => e.preventDefault();
-        div.ondrop = (e) => handleDrop(e, idx);
-        div.innerHTML = `<span>${item.definition}</span><br><span class="drop-word" id="drop-word-${idx}"></span>`;
-        defsDiv.appendChild(div);
-    });
+    if (defsDiv) {
+        defsDiv.innerHTML = '<strong>' + t('minigames_1_def_label') + '</strong>';
+        shuffledDefinitions.forEach((item, idx) => {
+            const div = document.createElement('div');
+            div.className = 'dropzone';
+            div.id = 'def-' + idx;
+            div.ondragover = (e) => e.preventDefault();
+            div.ondrop = (e) => handleDrop(e, idx);
+            div.innerHTML = `<span>${t(item.definition)}</span><br><span class="drop-word" id="drop-word-${idx}"></span>`;
+            defsDiv.appendChild(div);
+        });
+    }
 }
+
 function handleDrop(e, defIdx) {
     e.preventDefault();
     const word = e.dataTransfer.getData('text/plain');
     const def = shuffledDefinitions[defIdx];
-    // un seul mot par def
-    if (document.getElementById('drop-word-' + defIdx).innerText !== '') return;
-    document.getElementById('drop-word-' + defIdx).innerText = word;
+    const dropWordElem = document.getElementById('drop-word-' + defIdx);
+    if (!dropWordElem || dropWordElem.innerText !== '') return;
+    dropWordElem.innerText = t(word);
     matches[defIdx] = word;
-    // supprime le mot de la liste des mots à glisser si il a été posé
-    const wordElem = Array.from(document.getElementsByClassName('draggable-word')).find(el => el.innerText === word);
+    const wordElem = Array.from(document.getElementsByClassName('draggable-word')).find(el => el.innerText === t(word));
     if (wordElem) wordElem.remove();
-    // vérifie si on a fini de poser tous les mots
     if (Object.keys(matches).length === shuffledDefinitions.length) checkResult();
 }
 
@@ -121,63 +115,79 @@ function checkResult() {
         }
     }
     score = correct;
-    document.getElementById('result').innerText = `Résultat : ${score} / ${shuffledDefinitions.length}`;
-    document.getElementById('restart').style.display = 'inline-block';
+    const resultElem = document.getElementById('result');
+    const restartElem = document.getElementById('restart');
+    if (resultElem) resultElem.innerText = `Résultat : ${score} / ${shuffledDefinitions.length}`;
+    if (restartElem) restartElem.style.display = 'inline-block';
 }
 
-document.getElementById('restart').onclick = renderGame;
-
-renderGame();
-
-
-
-// JEUX VRAI OU FAUX 
-// ajouter dans le tableau les questions et leurs réponses en suivant le format
-const vfQuestions = [
-    { q: "La devise de la République française est Liberté, Égalité, Fraternité.", a: true },
-    { q: "La laïcité interdit toute religion en France.", a: false },
-    { q: "Tous les citoyens sont égaux devant la loi.", a: true },
-    { q: "On peut voter en France à partir de 16 ans.", a: false }
-];
-
-let vfIndex = 0, vfScore = 0;
-
-// affiche la question 
 function showVFQuestion() {
-    // Efface le dernier feedback puis retire le bouton question suivant pui affiche la question actuelle
-    document.getElementById('vf-feedback').innerText = '';
-    document.getElementById('vf-next').style.display = 'none';
-    document.getElementById('vf-question').innerText = vfQuestions[vfIndex].q;
+    const vfQuestion = document.getElementById('vf-question');
+    const vfFeedback = document.getElementById('vf-feedback');
+    const vfNext = document.getElementById('vf-next');
+    const minigamesContainer = document.querySelector('.minigames-container');
+    if (!vfQuestion || !vfFeedback || !vfNext || !minigamesContainer) return;
+
+    if (vfFinished) {
+        minigamesContainer.innerHTML = `<h2>${t('vf_score')} : ${vfScore} / ${vfQuestionsKeys.length}</h2>`;
+        return;
+    }
+
+    vfFeedback.innerText = '';
+    vfNext.style.display = 'none';
+    vfQuestion.innerText = t(vfQuestionsKeys[vfIndex].q);
 }
 
-// check si la réponse est true
-document.getElementById('vf-true').onclick = () => checkVF(true);
-// check si la réponse est false 
-document.getElementById('vf-false').onclick = () => checkVF(false);
-
-// gestion du passage a la questions suivante 
-document.getElementById('vf-next').onclick = () => {
-    vfIndex++; 
-    if (vfIndex < vfQuestions.length) {
-        showVFQuestion();
-    } else {
-        // si c'était la dernière question, affiche le score final
-        document.querySelector('.minigames-container').innerHTML = `<h2>Score : ${vfScore} / ${vfQuestions.length}</h2>`;
-    }
-};
-
-// check la réponse de l'user
 function checkVF(ans) {
-    // si c'est true ajoute du score et affiche un message de succès, sinon affiche un message comme quoi c'est faux
-    if (ans === vfQuestions[vfIndex].a) {
-        document.getElementById('vf-feedback').innerText = "Bonne réponse !";
+    const vfFeedback = document.getElementById('vf-feedback');
+    const vfNext = document.getElementById('vf-next');
+    if (!vfFeedback || !vfNext) return;
+    if (ans === vfQuestionsKeys[vfIndex].a) {
+        vfFeedback.innerText = t('vf_good');
         vfScore++;
     } else {
-        document.getElementById('vf-feedback').innerText = "Mauvaise réponse.";
+        vfFeedback.innerText = t('vf_bad');
     }
-    // montre le question suivante
-    document.getElementById('vf-next').style.display = 'inline-block';
+    vfNext.style.display = 'inline-block';
 }
 
-// affiche la premiere question au début du jeu
-showVFQuestion();
+document.addEventListener('DOMContentLoaded', () => {
+    const restartElem = document.getElementById('restart');
+    if (restartElem) restartElem.onclick = renderGame;
+    if (document.getElementById('words') && document.getElementById('definitions')) {
+        renderGame();
+    }
+
+    const vfTrue = document.getElementById('vf-true');
+    const vfFalse = document.getElementById('vf-false');
+    const vfNext = document.getElementById('vf-next');
+    const minigamesContainer = document.querySelector('.minigames-container');
+
+    // expose pour reload dynamique
+    window.showVFQuestion = function() {
+        showVFQuestion();
+    };
+    window.renderGame = function() {
+        renderGame();
+    };
+
+    if (vfTrue && vfFalse && vfNext && minigamesContainer) {
+        vfIndex = 0;
+        vfScore = 0;
+        vfFinished = false;
+
+        vfTrue.onclick = () => checkVF(true);
+        vfFalse.onclick = () => checkVF(false);
+        vfNext.onclick = () => {
+            vfIndex++;
+            if (vfIndex < vfQuestionsKeys.length) {
+                showVFQuestion();
+            } else {
+                vfFinished = true;
+                showVFQuestion();
+            }
+        };
+
+        showVFQuestion();
+    }
+});
