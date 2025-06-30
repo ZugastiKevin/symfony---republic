@@ -3,18 +3,54 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <header class="main-header">
+        <div class="flag"</div>
+        <div class="logo-burger">
+        <button class="burger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        </div>
+        <div
+            <ul>
+            <li><a href="#login">Se Connecter</a></li>
+            <li><a href="#language">Langue</a></li>
+            </ul>
+        </div>
+        <div
+        <nav>
+            <ul>
+            <li><a href="#home">Page d'aceuil</a></li>
+            <li><a href="#valeurs">Les valeurs</a></li>
+            <li><a href="#jeux">Jeux</a></li>
+            <li><a href="quiz">Quiz</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <div
+        <h1>Les valeurs de la république</h1>
+        <div class="photo-republique">
+            <img src="" alt="Photo République">
+        </div>
+    </div>
+    <div
+        <h2>Description</h2>
+        <div class="crapeau français">
+            <img src="" alt="Photo Drapeau">
+        </div>
+    </div>
+    <div
+        <h2>Notre fameux quizz</h2>
+        <div class="crapeau français">
+            <img src="" alt="Photo Drapeau">
+            <p>Ce quiz a pour but de tester vos connaissances concernant les valeurs essentielles de la République.</p>
+            <a href="#quiz" class="bouton">Quiz</a>
+        </div>
+    </div>
+  
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/html/republic/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/var/www/html/republic/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+
 {% endblock %}
