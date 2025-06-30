@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MiniGamesController!{% endblock %}
+
+{% block body %}
+<body>
+    <div class="minigames-container">
+        <div class="minigames">
+            <div class="minigames-container">
+                <div class="minigames-heading">
+                    <h1>Relie le mot à sa définition</h1>
+                    <h3>Fais glisser chaque mot sur la bonne définition !</h3>
+                    <p>Fais correspondre les mots-clés de la République française à leur définition.</p>
+                </div>
+                <div class="minigames-content">
+                    <div id="game">
+                        <div id="words" style="margin-bottom:20px;"></div>
+                        <div id="definitions"></div>
+                        <div id="result" style="margin-top:20px;font-weight:bold;"></div>
+                        <button id="restart" style="display:none;margin-top:20px;">Recommencer</button>
+                    </div>
+                </div>
+            </div>
+            <h1>Vrai ou Faux ?</h1>
+            <div id="vf-question"></div>
+            <button id="vf-true">Vrai</button>
+            <button id="vf-false">Faux</button>
+            <div id="vf-feedback" style="margin-top:20px;font-weight:bold;"></div>
+            <button id="vf-next" style="display:none;">Question suivante</button>
+        </div>
+    </div>
+</body>
+<style>
+.minigames-container { 
+    max-width: 700px; 
+    margin: 0 auto; 
+    }
+.draggable-word {
+    display: inline-block;
+    background: #e3e3ff;
+    margin: 5px 10px 5px 0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: grab;
+    font-weight: bold;
+    border: 1px solid #b3b3ff;
+    box-shadow: 0 2px 10px 2.5px rgba(0, 0, 0, 0.2);
+}
+.dropzone {
+    background: #f9f9f9;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    padding: 24px 50px;
+    margin: 10px 0;
+    min-height: 60px;
+}
+.drop-word {
+    display: inline-block;
+    min-width: 80px;
+    min-height: 24px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+    padding: 4px 8px;
+}
+.correct {
+    background: #c8f7c5;
+    border: 2px solid #27ae60;
+}
+.incorrect {
+    background: #f7c5c5;
+    border: 2px solid #e74c3c;
+}
+
+#restart {
+    background: #4f8cff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+#restart:hover {
+    background: #2563c9;
+}
+
+/* section vrai ou faux  */
+
+#vf-true, #vf-false, #vf-next {
+    background: #4f8cff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 10px 0 0;
+    transition: background-color 0.2s;
+}
+#vf-true:hover, #vf-false:hover, #vf-next:hover {
+    background: #2563c9;
+}
+</style>
+{% endblock %}
