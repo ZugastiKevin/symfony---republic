@@ -7,5 +7,8 @@ import '@fortawesome/fontawesome-free/js/all.js';
  * which should already be in your base.html.twig.
  */
 import './styles/app.scss';
+import './JS/minigames.js'; // gestion des minijeux
+import './JS/flag.js'; // gestion des animations sur le drapeau
+import './JS/translation.js';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
