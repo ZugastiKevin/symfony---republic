@@ -3,18 +3,62 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <header class="main-header">
+        <div class="flag"</div>
+        <div class="logo-burger">
+        <button class="burger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        </div>
+        <div
+            <ul>
+            <li><a href="#login">Se Connecter</a></li>
+            <li><a href="#language">Langue</a></li>
+            </ul>
+        </div>
+        <div
+        <nav>
+            <ul>
+            <li><a href="#home">Page d'aceuil</a></li>
+            <li><a href="#valeurs">Les valeurs</a></li>
+            <li><a href="#jeux">Jeux</a></li>
+            <li><a href="quiz">Quiz</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <div
+        <h1>Les valeurs de la république</h1>
+        <div class="photo-republique">
+            <img src="" alt="Photo République">
+        </div>
+    </div>
+    <div
+        <h2>Description</h2>
+        <div class="crapeau français">
+            <img src="" alt="Photo Drapeau">
+        </div>
+        <div
+        <p>La République française repose sur des valeurs fondamentales : la liberté (droit de penser, de s'exprimer et de pratiquer la religion de son choix), l'égalité (tous les citoyens sont égaux devant la loi, sans distinction d'origine ou de croyance) et la fraternité (solidarité et respect mutuel). Elle est indivisible, démocratique, sociale et laïque, selon la Constitution. La laïcité, affirmée par la loi de 1905, garantit la liberté de conscience et impose la neutralité de l'État à l'égard des religions : aucune n'est privilégiée ni financée, afin d'assurer la coexistence harmonieuse des croyances et le respect des lois communes. Ces principes structurent le vivre-ensemble et l'identité républicaine.
+        </p>
+        </div>
+    <div
+        <h2>Notre fameux quizz</h2>
+            <p>Ce quiz a pour but de tester vos connaissances concernant les valeurs essentielles de la République.</p>
+            <img src="" alt="Gif présentation des mini jeux">
+            <a href="#quiz" class="bouton">Quiz</a>
+        </div>
+    </div>
+    <div
+        <h2>Nos mini jeux</h2>
+        <p>Viendez découvrir nos merveilleux petits jeux</p>
+        <p>Plongez dans l'univers des valeurs et des symboles de la République française grâce à ces mini-jeux et quiz ludiques ! Chaque activité vous invite à tester vos connaissances sur la liberté, l'égalité, la fraternité, la laïcité, et les grandes étapes de l'histoire républicaine. À travers des questions et des défis interactifs, découvrez de façon amusante les principes qui fondent notre démocratie. Que vous soyez seul, en famille ou en classe, ces jeux sont une occasion conviviale d'enrichir votre culture citoyenne tout en vous divertissant.</p>
+    </div>
+   
+  
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/html/republic/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/var/www/html/republic/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+
 {% endblock %}
