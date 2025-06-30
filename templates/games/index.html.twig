@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GamesController!{% endblock %}
+
+{% block body %}
+    <section id="lobby">
+        <div class="container lobby">
+            <h2>Code de la partie : {{ game.code }}</h2>
+            <h3>Joueurs connectés :</h3>
+            <ul>
+                {% for player in game.players %}
+                    <li>{{ player.username }}</li>
+                {% endfor %}
+            </ul>
+
+            {% if not game.started %}
+                <p>En attente du démarrage...</p>
+            {% else %}
+                <p>La partie a commencé !</p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
