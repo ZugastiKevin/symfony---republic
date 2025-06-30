@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ userUpdateForm ? 'Modification du compte' :  'Creation de compte' }}{% endblock %}
+
+{% block body %}
+        <h1> {{ userUpdateForm ? 'Modifier vos informations' :  'Ajouter vos informations' }}</h1>
+
+        {{form_start(userCreateForm)}}
+            {{form_widget(userCreateForm)}}
+            <input type="submit" value="{{ userUpdateForm ? 'Modifier' :  'Validez' }}">
+        {{form_end(userCreateForm)}}
+{% endblock %}

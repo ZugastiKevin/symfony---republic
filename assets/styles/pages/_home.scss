@@ -1,0 +1,31 @@
+@use "../abstracts/variables" as variable;
+
+main {
+    #home {
+
+    }
+}
+
+@media screen and (min-width:1921px) {  
+    main {
+        #home {
+
+        }
+    }
+}
+
+@media screen and (max-width:1250px) {  
+    main {
+        #home {
+
+        }
+    }
+}
+
+@media screen and (max-width:768px) {  
+    main {
+        #home {
+
+        }
+    }
+}

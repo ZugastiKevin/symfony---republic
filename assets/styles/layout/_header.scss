@@ -1,0 +1,41 @@
+@use "../abstracts/variables" as variable;
+
+@keyframes dropdown-show {
+    0% {
+        opacity: 0;
+    };
+    100% {
+        opacity: 1;
+    };
+};
+
+@keyframes dropdown-dont-show {
+    0% {
+        opacity: 1;
+    };
+    100% {
+        opacity: 0;
+    };
+};
+
+#header {
+    
+}
+
+@media screen and (min-width:1921px) {  
+    #header {
+        
+    }
+}
+
+@media screen and (max-width:1250px) {  
+    #header {
+        
+    }
+}
+
+@media screen and (max-width:768px) {  
+    #header {
+        
+    }
+}
