@@ -28,6 +28,10 @@
             rgba(55, 65, 81, 0.9) 0%, 
             rgba(31, 41, 55, 0.9) 100%);
         transition: all 0.3s ease;
+
+        .lang-switcher {
+           margin-right: -5%; 
+        }
     }
 
     .navbar {

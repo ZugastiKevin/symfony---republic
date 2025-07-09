@@ -34,7 +34,6 @@
                 
                 <!-- Navigation principale -->
                 <ul class="links-container">
-                    <li class="nav-items"><a href="{{ path('allquiz') }}" data-i18n="nav_Quiz">Quiz</a></li>
                     <li class="nav-items"><a href="{{ path('mini_games')}}" data-i18n="nav_minigames">Je teste mes compétences</a></li>
                     <li class="nav-items"><a href="" data-i18n="nav_ipsum">Expedita!</a></li>
                     <li class="nav-items"><a href="" data-i18n="nav_dolor">Libero.</a></li>
@@ -56,12 +55,90 @@
                 </div>
             </nav>
         </header>
+        
         <main>
             {% block body %}{% endblock %}
         </main>
         
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <!-- Section À propos -->
+                    <div class="footer-section footer-about">
+                        <div class="footer-logo">
+                            <div class="footer-flag">
+                                <div class="flag-stripe flag-stripe--blue"></div>
+                                <div class="flag-stripe flag-stripe--white"></div>
+                                <div class="flag-stripe flag-stripe--red"></div>
+                            </div>
+                            <span class="footer-logo-text" data-i18n="footer_logo">République</span>
+                        </div>
+                        <p data-i18n="footer_description">
+                            Plateforme d'apprentissage des valeurs et principes de la République française. 
+                            Découvrez, apprenez et testez vos connaissances sur notre démocratie.
+                        </p>
+                    </div>
+                    
+                    <!-- Section Navigation -->
+                    <div class="footer-section footer-nav">
+                        <h3 data-i18n="footer_nav_title">Navigation</h3>
+                        <ul>
+                            <li><a href="{{ path('home') }}" data-i18n="footer_nav_home">Accueil</a></li>
+                            <li><a href="{{ path('mini_games') }}" data-i18n="footer_nav_games">Mini-jeux</a></li>
+                            <li><a href="#" data-i18n="footer_nav_about">À propos</a></li>
+                            <li><a href="#" data-i18n="footer_nav_help">Aide</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Section Contact -->
+                    <div class="footer-section footer-contact">
+                        <h3 data-i18n="footer_contact_title">Contact</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:contact@republique.fr">contact@republique.fr</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>01 23 45 67 89</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="footer_address">Paris, France</span>
+                            </div>
+                        </div>
+                        
+                        <div class="footer-social">
+                            <div class="social-links">
+                                <a href="#" title="Facebook" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" title="Twitter" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" title="LinkedIn" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" title="YouTube" aria-label="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        <span data-i18n="footer_copyright">© 2025 République.</span> 
+                        <span data-i18n="footer_rights">Tous droits réservés.</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#" data-i18n="footer_privacy">Confidentialité</a>
+                        <a href="#" data-i18n="footer_terms">Conditions</a>
+                        <a href="#" data-i18n="footer_legal">Mentions légales</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </body>
-    <footer class="footer">
-    
-    </footer>
 </html>

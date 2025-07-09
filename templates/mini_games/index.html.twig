@@ -4,11 +4,6 @@
 
 {% block body %}
 <div class="minigames-container">
-    {# <div id="french-flag" class="french-flag">
-        <div class="flag-stripe flag-stripe--blue"></div>
-        <div class="flag-stripe flag-stripe--white"></div>
-        <div class="flag-stripe flag-stripe--red"></div>
-    </div> #}
     <div class="minigames">
         <!-- Jeu 1: Glisser-déposer -->
         <section class="game-section drag-drop-game">
@@ -42,11 +37,41 @@
         <section class="game-section true-false-game">
             <div class="game-header">
                 <h1 data-i18n="minigames_2_title"></h1>
+                <p data-i18n="vf_choose_difficulty">Choisissez votre niveau de difficulté :</p>
             </div>
             
-            <div class="game-content">
+            <!-- Sélecteur de difficulté -->
+            <div class="vf-difficulty-selector">
+                <div class="vf-difficulty-buttons">
+                    <button class="vf-difficulty-btn easy" data-difficulty="4">
+                        <div class="difficulty-icon">📚</div>
+                        <div class="difficulty-title" data-i18n="vf_easy">Facile</div>
+                        <div class="difficulty-desc" data-i18n="vf_easy_desc">4 questions</div>
+                    </button>
+                    
+                    <button class="vf-difficulty-btn medium" data-difficulty="8">
+                        <div class="difficulty-icon">🎯</div>
+                        <div class="difficulty-title" data-i18n="vf_medium">Moyen</div>
+                        <div class="difficulty-desc" data-i18n="vf_medium_desc">8 questions</div>
+                    </button>
+                    
+                    <button class="vf-difficulty-btn hard" data-difficulty="10">
+                        <div class="difficulty-icon">🏆</div>
+                        <div class="difficulty-title" data-i18n="vf_hard">Difficile</div>
+                        <div class="difficulty-desc" data-i18n="vf_hard_desc">10 questions</div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Contenu du jeu (caché au début) -->
+            <div class="vf-game-content" style="display: none;">
                 <div class="question-container">
+                    <div id="vf-progress"></div>
                     <div id="vf-question"></div>
+                </div>
+                
+                <div class="score-display">
+                    <div id="vf-score"></div>
                 </div>
                 
                 <div class="answer-buttons">

@@ -14,30 +14,61 @@
 
 .game-section {
     background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0055A4, #FFFFFF, #EF4135);
+    }
     
     .game-header {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
         
         h1 {
-            color: variable.$color-1;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            color: variable.$color-2; // Maintenant bien visible !
+            font-family: variable.$font-primary;
+            font-weight: variable.$font-weight-bold;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 3px;
+                background: linear-gradient(90deg, #0055A4, #EF4135);
+                border-radius: 2px;
+            }
         }
         
         h3 {
-            color: variable.$color-2;
+            color: variable.$color-4; // Gris moyen pour sous-titre
+            font-family: variable.$font-secondary;
             font-weight: 400;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
         }
         
         p {
-            color: #888;
-            font-size: 0.95rem;
+            color: variable.$color-4; // Gris moyen au lieu de #888
+            font-family: variable.$font-secondary;
+            font-size: 1rem;
+            line-height: 1.5;
         }
     }
     
@@ -48,9 +79,22 @@
             
             strong {
                 display: block;
-                color: variable.$color-1;
-                font-size: 1.1rem;
+                color: variable.$color-2; // Bien visible maintenant
+                font-family: variable.$font-primary;
+                font-weight: variable.$font-weight-bold;
+                font-size: 1.2rem;
                 margin-bottom: 1rem;
+                position: relative;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    left: 0;
+                    width: 40px;
+                    height: 2px;
+                    background: linear-gradient(90deg, #0055A4, #EF4135);
+                }
             }
         }
     }
@@ -60,21 +104,28 @@
 .drag-drop-game {
     .draggable-word {
         display: inline-block;
-        background: linear-gradient(135deg, lighten(variable.$color-3, 10%) 0%, variable.$color-3 100%);
-        margin: 5px 10px 5px 0;
-        padding: 12px 20px;
+        background: linear-gradient(135deg, 
+            variable.$color-1 0%, 
+            darken(variable.$color-1, 8%) 100%);
+        color: variable.$color-2; // Texte foncé bien lisible
+        margin: 8px 12px 8px 0;
+        padding: 14px 24px;
         border-radius: 25px;
         cursor: grab;
+        font-family: variable.$font-secondary;
         font-weight: 600;
-        border: 2px solid variable.$color-1;
-        box-shadow: 0 4px 15px rgba(193, 161, 90, 0.3);
+        border: 2px solid variable.$color-2; // Bordure visible
+        box-shadow: 0 4px 15px rgba(55, 65, 81, 0.15);
         transition: all 0.3s ease;
         user-select: none;
         
         &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(193, 161, 90, 0.4);
-            background: linear-gradient(135deg, variable.$color-3 0%, darken(variable.$color-3, 5%) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(55, 65, 81, 0.25);
+            background: linear-gradient(135deg, 
+                darken(variable.$color-1, 5%) 0%, 
+                darken(variable.$color-1, 12%) 100%);
+            border-color: darken(variable.$color-2, 10%);
         }
         
         &:active {
@@ -84,8 +135,8 @@
     }
     
     .dropzone {
-        background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
-        border: 3px dashed variable.$color-2;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border: 3px dashed variable.$color-4; // Bordure gris moyen
         border-radius: 12px;
         padding: 24px;
         margin: 15px 0;
@@ -93,9 +144,18 @@
         transition: all 0.3s ease;
         position: relative;
         
+        p {
+            color: variable.$color-2; // Texte foncé dans dropzone
+            font-family: variable.$font-secondary;
+            margin: 0;
+            font-weight: 500;
+        }
+        
         &:hover {
-            border-color: variable.$color-1;
-            background: linear-gradient(135deg, lighten(variable.$color-3, 15%) 0%, lighten(variable.$color-3, 10%) 100%);
+            border-color: variable.$color-2;
+            background: linear-gradient(135deg, 
+                lighten(variable.$color-1, 5%) 0%, 
+                variable.$color-1 100%);
         }
         
         .drop-word {
@@ -103,67 +163,77 @@
             min-width: 100px;
             min-height: 32px;
             background: white;
+            color: variable.$color-2; // Texte foncé
             border-radius: 20px;
-            border: 2px solid #ddd;
+            border: 2px solid variable.$color-4;
             margin-top: 12px;
             padding: 8px 16px;
+            font-family: variable.$font-secondary;
             font-weight: 600;
             text-align: center;
             transition: all 0.3s ease;
             
             &.correct {
-                background: linear-gradient(135deg, #c8f7c5 0%, #a8f7a5 100%);
-                border-color: #27ae60;
-                color: #1e8449;
+                background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+                border-color: #28a745;
+                color: #155724;
                 transform: scale(1.05);
-                box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+                box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
             }
             
             &.incorrect {
-                background: linear-gradient(135deg, #f7c5c5 0%, #f7a5a5 100%);
-                border-color: #e74c3c;
-                color: #c0392b;
+                background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+                border-color: #dc3545;
+                color: #721c24;
                 transform: scale(1.05);
-                box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+                box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
             }
         }
     }
     
     .game-result {
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 2.5rem;
         
         #result {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: variable.$color-1;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: variable.$font-primary;
+            font-weight: variable.$font-weight-bold;
+            color: variable.$color-2; // Bien visible
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, 
+                lighten(variable.$color-1, 5%) 0%, 
+                variable.$color-1 100%);
+            border-radius: 12px;
+            border: 1px solid variable.$color-4;
         }
         
         #restart {
-            background: linear-gradient(135deg, variable.$color-1 0%, darken(variable.$color-1, 10%) 100%);
+            background: linear-gradient(135deg, 
+                variable.$color-2 0%, 
+                darken(variable.$color-2, 15%) 100%);
             color: white;
             border: none;
             border-radius: 25px;
-            padding: 12px 30px;
+            padding: 14px 32px;
+            font-family: variable.$font-secondary;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(193, 161, 90, 0.3);
+            box-shadow: 0 4px 15px rgba(55, 65, 81, 0.25);
             
             &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(193, 161, 90, 0.4);
-                background: linear-gradient(135deg, darken(variable.$color-1, 5%) 0%, darken(variable.$color-1, 15%) 100%);
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(55, 65, 81, 0.35);
+                background: linear-gradient(135deg, 
+                    lighten(variable.$color-2, 5%) 0%, 
+                    darken(variable.$color-2, 10%) 100%);
             }
             
             &:active {
-                transform: translateY(0);
-            }
-            
-            &[style*="display:none"] {
-                display: none !important;
+                transform: translateY(-1px);
             }
         }
     }
@@ -172,65 +242,87 @@
 // True/False Game Styles
 .true-false-game {
     .question-container {
-        background: linear-gradient(135deg, lighten(variable.$color-3, 15%) 0%, variable.$color-3 100%);
-        border-radius: 12px;
-        padding: 2rem;
+        background: linear-gradient(135deg, 
+            white 0%, 
+            lighten(variable.$color-1, 2%) 100%);
+        border-radius: 16px;
+        padding: 2.5rem;
         margin-bottom: 2rem;
-        border-left: 5px solid variable.$color-1;
+        border-left: 6px solid variable.$color-2; // Bordure visible
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         
         #vf-question {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.6;
-            color: variable.$color-2;
+            color: variable.$color-2; // Texte bien visible
+            font-family: variable.$font-secondary;
             font-weight: 500;
+            margin: 0;
         }
     }
     
     .answer-buttons {
         display: flex;
-        gap: 1rem;
+        gap: 1.5rem;
         justify-content: center;
         margin-bottom: 2rem;
         
         button {
-            background: linear-gradient(135deg, variable.$color-1 0%, darken(variable.$color-1, 10%) 100%);
-            color: white;
             border: none;
             border-radius: 25px;
-            padding: 15px 30px;
-            font-size: 1rem;
+            padding: 16px 32px;
+            font-family: variable.$font-secondary;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(193, 161, 90, 0.3);
-            min-width: 120px;
-            
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(193, 161, 90, 0.4);
-            }
-            
-            &:active {
-                transform: translateY(0);
-            }
+            min-width: 140px;
+            color: white;
             
             &#vf-true {
-                background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
-                box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+                background: linear-gradient(135deg, #28a745 0%, #20692e 100%);
+                box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
                 
                 &:hover {
-                    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+                    background: linear-gradient(135deg, #34ce57 0%, #28a745 100%);
                 }
             }
             
             &#vf-false {
-                background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-                box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+                background: linear-gradient(135deg, #dc3545 0%, #a71e2a 100%);
+                box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
                 
                 &:hover {
-                    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+                    background: linear-gradient(135deg, #e74c3c 0%, #dc3545 100%);
                 }
             }
+            
+            &:active {
+                transform: translateY(-1px);
+            }
+        }
+    }
+    
+    .score-display {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        
+        #vf-score {
+            font-size: 1.1rem;
+            font-family: variable.$font-primary;
+            font-weight: variable.$font-weight-bold;
+            color: variable.$color-2; // Bien visible
+            background: linear-gradient(135deg, 
+                variable.$color-1 0%, 
+                darken(variable.$color-1, 5%) 100%);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid variable.$color-4;
+            display: inline-block;
         }
     }
     
@@ -239,33 +331,44 @@
         
         #vf-feedback {
             font-size: 1.1rem;
+            font-family: variable.$font-secondary;
             font-weight: 600;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 12px;
             min-height: 20px;
-            color: variable.$color-2;
+            color: variable.$color-2; // Texte visible
+            background: linear-gradient(135deg, 
+                white 0%, 
+                lighten(variable.$color-1, 3%) 100%);
+            border: 1px solid variable.$color-4;
         }
         
         #vf-next {
-            background: linear-gradient(135deg, variable.$color-2 0%, darken(variable.$color-2, 10%) 100%);
+            background: linear-gradient(135deg, 
+                variable.$color-2 0%, 
+                darken(variable.$color-2, 15%) 100%);
             color: white;
             border: none;
             border-radius: 25px;
-            padding: 12px 25px;
+            padding: 14px 28px;
+            font-family: variable.$font-secondary;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(90, 90, 90, 0.3);
+            box-shadow: 0 4px 15px rgba(55, 65, 81, 0.25);
             
             &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(90, 90, 90, 0.4);
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(55, 65, 81, 0.35);
+                background: linear-gradient(135deg, 
+                    lighten(variable.$color-2, 5%) 0%, 
+                    darken(variable.$color-2, 10%) 100%);
             }
             
-            &[style*="display:none"] {
-                display: none !important;
+            &:active {
+                transform: translateY(-1px);
             }
         }
     }
@@ -275,23 +378,542 @@
 @media (max-width: 768px) {
     .minigames-container {
         padding: 1rem;
+        max-width: 100%;
     }
     
     .game-section {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
         
-        .game-header h1 {
-            font-size: 1.5rem;
+        .game-header {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
         }
     }
     
-    .true-false-game .answer-buttons {
-        flex-direction: column;
-        align-items: center;
+    .true-false-game {
+        .answer-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            
+            button {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+        
+        .question-container {
+            padding: 2rem 1.5rem;
+            
+            #vf-question {
+                font-size: 1.1rem;
+            }
+        }
+    }
+    
+    .drag-drop-game {
+        .draggable-word {
+            margin: 5px 8px 5px 0;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+        }
+        
+        .dropzone {
+            padding: 20px 15px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .game-section {
+        padding: 1.5rem 1rem;
+        
+        .game-header h1 {
+            font-size: 1.6rem;
+        }
     }
     
     .drag-drop-game .draggable-word {
-        margin: 5px 5px 5px 0;
-        padding: 10px 16px;
+        display: block;
+        margin: 8px 0;
+        text-align: center;
+    }
+}
+.vf-final-results {
+    text-align: center;
+    padding: 2rem;
+    animation: resultFadeIn 0.6s ease-out;
+    
+    .vf-result-header {
+        margin-bottom: 2rem;
+        
+        .vf-result-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounceIn 0.8s ease-out;
+        }
+        
+        .vf-result-title {
+            color: variable.$color-2;
+            font-family: variable.$font-primary;
+            font-weight: variable.$font-weight-bold;
+            font-size: 2rem;
+            margin: 0;
+        }
+    }
+    
+    .vf-result-score {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+        padding: 2rem;
+        border-radius: 20px;
+        
+        &.excellent {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 3px solid #28a745;
+        }
+        
+        &.good {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 3px solid #ffc107;
+        }
+        
+        &.needs-improvement {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border: 3px solid #dc3545;
+        }
+        
+        .vf-score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            
+            .vf-score-number {
+                font-size: 2.5rem;
+                font-weight: variable.$font-weight-bold;
+                color: variable.$color-2;
+                font-family: variable.$font-primary;
+            }
+            
+            .vf-score-total {
+                font-size: 1rem;
+                color: variable.$color-4;
+                font-family: variable.$font-secondary;
+            }
+        }
+        
+        .vf-score-percentage {
+            font-size: 3rem;
+            font-weight: variable.$font-weight-bold;
+            color: variable.$color-2;
+            font-family: variable.$font-primary;
+        }
+    }
+    
+    .vf-result-message {
+        margin: 2rem 0;
+        
+        p {
+            font-size: 1.2rem;
+            color: variable.$color-2;
+            font-family: variable.$font-secondary;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+    }
+    
+    .vf-result-details {
+        margin: 3rem 0;
+        
+        h3 {
+            color: variable.$color-2;
+            font-family: variable.$font-primary;
+            font-weight: variable.$font-weight-bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .vf-questions-recap {
+            .vf-question-item {
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                margin: 0.5rem 0;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                
+                &.correct {
+                    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+                    border-left: 4px solid #28a745;
+                }
+                
+                &.incorrect {
+                    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+                    border-left: 4px solid #dc3545;
+                }
+                
+                .vf-question-number {
+                    width: 30px;
+                    height: 30px;
+                    background: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: variable.$font-weight-bold;
+                    color: variable.$color-2;
+                    margin-right: 1rem;
+                    flex-shrink: 0;
+                }
+                
+                .vf-question-text {
+                    flex: 1;
+                    text-align: left;
+                    color: variable.$color-2;
+                    font-family: variable.$font-secondary;
+                    padding: 0 1rem;
+                }
+                
+                .vf-question-result {
+                    font-size: 1.5rem;
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+    
+    .vf-result-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+        
+        button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-family: variable.$font-secondary;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            &.vf-restart-btn {
+                background: linear-gradient(135deg, variable.$color-2 0%, darken(variable.$color-2, 15%) 100%);
+                color: white;
+                box-shadow: 0 4px 15px rgba(55, 65, 81, 0.25);
+                
+                &:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(55, 65, 81, 0.35);
+                }
+            }
+            
+            &.vf-continue-btn {
+                background: linear-gradient(135deg, #0055A4 0%, #003d7a 100%);
+                color: white;
+                box-shadow: 0 4px 15px rgba(0, 85, 164, 0.25);
+                
+                &:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(0, 85, 164, 0.35);
+                }
+            }
+        }
+    }
+}
+
+// Feedback des réponses amélioré
+.feedback-container {
+    #vf-feedback {
+        &.vf-feedback-correct {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 1px solid #28a745;
+            color: #155724;
+        }
+        
+        &.vf-feedback-incorrect {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border: 1px solid #dc3545;
+            color: #721c24;
+        }
+    }
+}
+
+// Animations
+@keyframes resultFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+// Responsive pour les résultats
+@media (max-width: 768px) {
+    .vf-final-results {
+        padding: 1.5rem;
+        
+        .vf-result-score {
+            flex-direction: column;
+            gap: 1rem;
+            
+            .vf-score-circle {
+                width: 100px;
+                height: 100px;
+                
+                .vf-score-number {
+                    font-size: 2rem;
+                }
+            }
+            
+            .vf-score-percentage {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .vf-result-actions {
+            flex-direction: column;
+            
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        .vf-questions-recap .vf-question-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+            
+            .vf-question-text {
+                padding: 0;
+                text-align: center;
+            }
+        }
+    }
+}
+.vf-difficulty-selector {
+    margin: 2rem 0;
+    
+    .vf-difficulty-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+        
+        .vf-difficulty-btn {
+            background: linear-gradient(135deg, white 0%, lighten(variable.$color-1, 2%) 100%);
+            border: 2px solid variable.$color-4;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, 
+                    transparent 0%, 
+                    rgba(255, 255, 255, 0.3) 50%, 
+                    transparent 100%);
+                transition: left 0.5s ease;
+            }
+            
+            .difficulty-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                display: block;
+            }
+            
+            .difficulty-title {
+                font-family: variable.$font-primary;
+                font-weight: variable.$font-weight-bold;
+                font-size: 1.3rem;
+                color: variable.$color-2;
+                margin-bottom: 0.5rem;
+            }
+            
+            .difficulty-desc {
+                font-family: variable.$font-secondary;
+                color: variable.$color-4;
+                font-size: 1rem;
+            }
+            
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                border-color: variable.$color-2;
+                
+                &::before {
+                    left: 100%;
+                }
+            }
+            
+            &.active {
+                border-color: variable.$color-2;
+                background: linear-gradient(135deg, 
+                    lighten(variable.$color-1, 5%) 0%, 
+                    variable.$color-1 100%);
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(55, 65, 81, 0.2);
+            }
+            
+            // Couleurs spécifiques par difficulté
+            &.easy:hover {
+                border-color: #28a745;
+                box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+            }
+            
+            &.medium:hover {
+                border-color: #ffc107;
+                box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+            }
+            
+            &.hard:hover {
+                border-color: #dc3545;
+                box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+            }
+        }
+    }
+}
+
+// Progression du quiz
+.question-container {
+    #vf-progress {
+        text-align: center;
+        font-family: variable.$font-secondary;
+        font-weight: 600;
+        color: variable.$color-4;
+        margin-bottom: 1rem;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, 
+            variable.$color-1 0%, 
+            darken(variable.$color-1, 3%) 100%);
+        border-radius: 20px;
+        border: 1px solid variable.$color-4;
+        display: inline-block;
+    }
+}
+
+// Badge de difficulté dans les résultats
+.vf-difficulty-badge {
+    background: linear-gradient(135deg, variable.$color-2 0%, darken(variable.$color-2, 15%) 100%);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-family: variable.$font-secondary;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(55, 65, 81, 0.25);
+}
+
+// Bouton nouvelle difficulté dans les résultats
+.vf-new-difficulty-btn {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%) !important;
+    color: #212529 !important;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.25) !important;
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 193, 7, 0.35) !important;
+        background: linear-gradient(135deg, #ffcd39 0%, #ffc107 100%) !important;
+    }
+}
+
+// Responsive pour le sélecteur de difficulté
+@media (max-width: 768px) {
+    .vf-difficulty-selector {
+        .vf-difficulty-buttons {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            
+            .vf-difficulty-btn {
+                padding: 1.5rem 1rem;
+                
+                .difficulty-icon {
+                    font-size: 2.5rem;
+                }
+                
+                .difficulty-title {
+                    font-size: 1.1rem;
+                }
+                
+                .difficulty-desc {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+    
+    .vf-final-results {
+        .vf-result-actions {
+            flex-direction: column;
+            gap: 0.8rem;
+            
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .vf-difficulty-selector {
+        margin: 1rem 0;
+        
+        .vf-difficulty-buttons {
+            .vf-difficulty-btn {
+                padding: 1.2rem 0.8rem;
+                
+                .difficulty-icon {
+                    font-size: 2rem;
+                    margin-bottom: 0.8rem;
+                }
+            }
+        }
     }
 }
