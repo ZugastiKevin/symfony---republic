@@ -11,6 +11,8 @@
     width: 100%;
     border-bottom: 3px solid darken(variable.$color-2, 10%);
     transition: all 0.3s ease;
+    top: 0;
+    left: 0;
     
     &.scrolled {
         display: flex;
