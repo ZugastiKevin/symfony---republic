@@ -1,112 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MiniGamesController!{% endblock %}
+{% block title %}Mini-jeux République{% endblock %}
 
 {% block body %}
-<body>
-    <div class="minigames-container">
-        <div class="minigames">
-            <div class="minigames-container">
-                <div class="minigames-heading">
-                    <h1 data-i18n="minigames_1_title" ></h1>
-                    <h3 data-i18n="minigames_1_subtitle" ></h3>
-                    <p data-i18n="minigames_1_desc" ></p>
-                </div>
-                <div class="minigames-content">
-                    <div id="game">
+<div class="minigames-container">
+    {# <div id="french-flag" class="french-flag">
+        <div class="flag-stripe flag-stripe--blue"></div>
+        <div class="flag-stripe flag-stripe--white"></div>
+        <div class="flag-stripe flag-stripe--red"></div>
+    </div> #}
+    <div class="minigames">
+        <!-- Jeu 1: Glisser-déposer -->
+        <section class="game-section drag-drop-game">
+            <div class="game-header">
+                <h1 data-i18n="minigames_1_title"></h1>
+                <h3 data-i18n="minigames_1_subtitle"></h3>
+                <p data-i18n="minigames_1_desc"></p>
+            </div>
+            
+            <div class="game-content">
+                <div id="game">
+                    <div class="words-section">
                         <strong data-i18n="minigames_1_label"></strong>
-                        <div id="words" style="margin-bottom:20px;"></div>
+                        <div id="words"></div>
+                    </div>
+                    
+                    <div class="definitions-section">
                         <strong data-i18n="minigames_1_def_label"></strong>
                         <div id="definitions"></div>
-                        <div id="result" style="margin-top:20px;font-weight:bold;"></div>
-                        <button id="restart" style="display:none;margin-top:20px;" data-i18n="minigames_1_restart"></button>
+                    </div>
+                    
+                    <div class="game-result">
+                        <div id="result"></div>
+                        <button id="restart" data-i18n="minigames_1_restart"></button>
                     </div>
                 </div>
             </div>
-            <h1 data-i18n="minigames_2_title"></h1>
-            <div id="vf-question"></div>
-            <button id="vf-true" data-i18n="minigames_2_true"></button>
-            <button id="vf-false" data-i18n="minigames_2_false"></button>
-            <div id="vf-feedback" style="margin-top:20px;font-weight:bold;"></div>
-            <button id="vf-next" style="display:none;" data-i18n="minigames_2_next" ></button>
-        </div>
+        </section>
+
+        <!-- Jeu 2: Vrai ou Faux -->
+        <section class="game-section true-false-game">
+            <div class="game-header">
+                <h1 data-i18n="minigames_2_title"></h1>
+            </div>
+            
+            <div class="game-content">
+                <div class="question-container">
+                    <div id="vf-question"></div>
+                </div>
+                
+                <div class="answer-buttons">
+                    <button id="vf-true" data-i18n="minigames_2_true"></button>
+                    <button id="vf-false" data-i18n="minigames_2_false"></button>
+                </div>
+                
+                <div class="feedback-container">
+                    <div id="vf-feedback"></div>
+                    <button id="vf-next" data-i18n="minigames_2_next"></button>
+                </div>
+            </div>
+        </section>
     </div>
-</body>
-<style>
-.minigames-container { 
-    max-width: 700px; 
-    margin: 0 auto; 
-    }
-.draggable-word {
-    display: inline-block;
-    background: #e3e3ff;
-    margin: 5px 10px 5px 0;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: grab;
-    font-weight: bold;
-    border: 1px solid #b3b3ff;
-    box-shadow: 0 2px 10px 2.5px rgba(0, 0, 0, 0.2);
-}
-.dropzone {
-    background: #f9f9f9;
-    border: 2px dashed #bbb;
-    border-radius: 8px;
-    padding: 24px 50px;
-    margin: 10px 0;
-    min-height: 60px;
-}
-.drop-word {
-    display: inline-block;
-    min-width: 80px;
-    min-height: 24px;
-    background: #fff;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    margin-top: 8px;
-    padding: 4px 8px;
-}
-.correct {
-    background: #c8f7c5;
-    border: 2px solid #27ae60;
-}
-.incorrect {
-    background: #f7c5c5;
-    border: 2px solid #e74c3c;
-}
-
-#restart {
-    background: #4f8cff;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 24px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: 0.2s;
-}
-#restart:hover {
-    background: #2563c9;
-}
-
-/* section vrai ou faux  */
-
-#vf-true, #vf-false, #vf-next {
-    background: #4f8cff;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 24px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 10px 10px 0 0;
-    transition: background-color 0.2s;
-}
-#vf-true:hover, #vf-false:hover, #vf-next:hover {
-    background: #2563c9;
-}
-</style>
+</div>
 {% endblock %}

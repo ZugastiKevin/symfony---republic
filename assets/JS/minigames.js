@@ -11,7 +11,7 @@ const data = [
     { word: "minigames_word_constitution", definition: "minigames_def_constitution" }
 ];
 
-// Clés pour les questions vrai/faux (pour traduction dynamique)
+// gestion des tableau vrai ou faux
 const vfQuestionsKeys = [
     { q: "vf_q1", a: true },
     { q: "vf_q2", a: false },
@@ -24,7 +24,7 @@ let shuffledDefinitions = [];
 let matches = {};
 let score = 0;
 
-// --- VRAI OU FAUX ---
+// section pour le jeux vrai ou faux
 let vfIndex = 0, vfScore = 0;
 let vfFinished = false;
 

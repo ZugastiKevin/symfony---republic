@@ -1,5 +1,6 @@
 // Pages
 @use "pages/home";
+@use "pages/minigames";
 
 //Layouts
 @use "layout/header";
@@ -7,6 +8,7 @@
 
 // Components
 @use "components/button";
+@use "components/flag";
 
 // Abstracts
 @use "abstracts/variables";
