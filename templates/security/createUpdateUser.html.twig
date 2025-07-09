@@ -1,12 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ userUpdateForm ? 'Modification du compte' :  'Creation de compte' }}{% endblock %}
+{% block title %}{{ userUpdateForm ? 'Modification du compte' : 'Inscription' }} - République{% endblock %}
 
 {% block body %}
-        <h1> {{ userUpdateForm ? 'Modifier vos informations' :  'Ajouter vos informations' }}</h1>
+<div class="register-page">
+    <div class="register-container">
+        <div class="register-header">
+            <h1 data-i18n="register_title">{{ userUpdateForm ? 'Modifier vos informations' : 'Rejoindre la République' }}</h1>
+            <p data-i18n="register_subtitle">{{ userUpdateForm ? 'Mettez à jour vos informations' : 'Créez votre compte citoyen' }}</p>
+        </div>
 
-        {{form_start(userCreateForm)}}
-            {{form_widget(userCreateForm)}}
-            <input type="submit" value="{{ userUpdateForm ? 'Modifier' :  'Validez' }}">
-        {{form_end(userCreateForm)}}
+        <div class="form-container">
+            {{ form_start(userCreateForm) }}
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form_label(userCreateForm.firstname, 'Prénom', {'label_attr': {'class': 'required'}}) }}
+                        {{ form_widget(userCreateForm.firstname, {'attr': {'placeholder': 'Jean'}}) }}
+                        {{ form_errors(userCreateForm.firstname) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(userCreateForm.lastname, 'Nom', {'label_attr': {'class': 'required'}}) }}
+                        {{ form_widget(userCreateForm.lastname, {'attr': {'placeholder': 'Dupont'}}) }}
+                        {{ form_errors(userCreateForm.lastname) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(userCreateForm.email, 'Email', {'label_attr': {'class': 'required'}}) }}
+                    {{ form_widget(userCreateForm.email, {'attr': {'placeholder': 'jean.dupont@email.fr'}}) }}
+                    {{ form_errors(userCreateForm.email) }}
+                </div>
+
+                {% if userCreateForm.plainPassword is defined %}
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form_label(userCreateForm.plainPassword.first, 'Mot de passe', {'label_attr': {'class': 'required'}}) }}
+                        {{ form_widget(userCreateForm.plainPassword.first, {'attr': {'placeholder': '••••••••'}}) }}
+                        {{ form_errors(userCreateForm.plainPassword.first) }}
+                        <div class="form-help">Minimum 8 caractères</div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(userCreateForm.plainPassword.second, 'Confirmer', {'label_attr': {'class': 'required'}}) }}
+                        {{ form_widget(userCreateForm.plainPassword.second, {'attr': {'placeholder': '••••••••'}}) }}
+                        {{ form_errors(userCreateForm.plainPassword.second) }}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% for child in userCreateForm %}
+                    {% if child.vars.name not in ['firstname', 'lastname', 'email', 'plainPassword', '_token'] %}
+                        <div class="form-group">
+                            {{ form_label(child) }}
+                            {{ form_widget(child) }}
+                            {{ form_errors(child) }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <button type="submit" class="register-button" data-i18n="register_submit">
+                    {{ userUpdateForm ? 'Modifier' : 'Créer mon compte' }}
+                </button>
+            {{ form_end(userCreateForm) }}
+        </div>
+
+        {% if not userUpdateForm %}
+        <div class="register-footer">
+            <p data-i18n="register_have_account">Déjà un compte ?</p>
+            <a href="{{ path('app_login') }}" data-i18n="register_login_link">Se connecter</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

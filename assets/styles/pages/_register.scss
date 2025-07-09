@@ -1,0 +1,341 @@
+@use "../abstracts/variables" as variable;
+
+.register-page {
+    min-height: 100vh;
+    max-height: 100vh; // Désactive le scroll
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+        variable.$color-3 0%, 
+        lighten(variable.$color-3, 5%) 30%,
+        variable.$color-1 70%,
+        darken(variable.$color-1, 5%) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="20,20 30,10 40,20 30,30" fill="rgba(255,255,255,0.08)"/><polygon points="70,60 80,50 90,60 80,70" fill="rgba(255,255,255,0.12)"/><polygon points="10,80 20,70 30,80 20,90" fill="rgba(255,255,255,0.06)"/></svg>');
+        animation: floatingShapes 25s ease-in-out infinite;
+    }
+    
+    .register-container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 
+            0 25px 70px rgba(0, 0, 0, 0.2),
+            0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 3rem 2.5rem;
+        max-width: 500px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        max-height: 85vh;
+        overflow-y: auto;
+        
+        /* Masque la scrollbar */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, 
+                #0055A4 0%, 
+                #0055A4 33.33%, 
+                #FFFFFF 33.33%, 
+                #FFFFFF 66.66%, 
+                #EF4135 66.66%, 
+                #EF4135 100%);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .register-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            
+            h1 {
+                color: variable.$color-2;
+                font-family: variable.$font-primary;
+                font-weight: variable.$font-weight-bold;
+                font-size: 2.2rem;
+                margin-bottom: 0.5rem;
+                position: relative;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 80px;
+                    height: 4px;
+                    background: linear-gradient(90deg, #0055A4, #FFFFFF, #EF4135);
+                    border-radius: 2px;
+                    animation: underlineGlow 3s ease-in-out infinite;
+                }
+            }
+            
+            p {
+                color: lighten(variable.$color-2, 20%);
+                font-family: variable.$font-secondary;
+                margin-top: 1.2rem;
+                font-size: 1.05rem;
+            }
+        }
+        
+        .form-container {
+            .form-row {
+                display: flex;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+                
+                .form-group {
+                    flex: 1;
+                    margin-bottom: 0;
+                }
+                
+                @media (max-width: 640px) {
+                    flex-direction: column;
+                    gap: 0;
+                    
+                    .form-group {
+                        margin-bottom: 1.5rem;
+                    }
+                }
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+                position: relative;
+                
+                label {
+                    display: block;
+                    color: variable.$color-2;
+                    font-family: variable.$font-primary;
+                    font-weight: variable.$font-weight-regular;
+                    margin-bottom: 0.6rem;
+                    font-size: 0.95rem;
+                    position: relative;
+                    
+                    &.required::after {
+                        content: '*';
+                        color: #EF4135;
+                        margin-left: 0.3rem;
+                        font-weight: bold;
+                    }
+                }
+                
+                .form-control,
+                input[type="text"],
+                input[type="email"],
+                input[type="password"],
+                input[type="tel"],
+                select {
+                    width: 100%;
+                    padding: 1.1rem 1.3rem;
+                    border: 2px solid rgba(90, 90, 90, 0.2);
+                    border-radius: 12px;
+                    font-family: variable.$font-secondary;
+                    font-size: 1rem;
+                    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    background: rgba(241, 224, 198, 0.08);
+                    box-sizing: border-box;
+                    
+                    &:focus {
+                        outline: none;
+                        border-color: variable.$color-2;
+                        background: white;
+                        box-shadow: 0 0 0 4px rgba(55, 65, 81, 0.15);
+                        transform: translateY(-2px);
+                    }
+                    
+                    &::placeholder {
+                        color: lighten(variable.$color-2, 35%);
+                    }
+                    
+                    &.is-invalid,
+                    &.error {
+                        border-color: #EF4135;
+                        background: rgba(239, 65, 53, 0.05);
+                    }
+                }
+                
+                .invalid-feedback,
+                .form-error {
+                    display: block;
+                    color: #EF4135;
+                    font-size: 0.85rem;
+                    margin-top: 0.4rem;
+                    font-family: variable.$font-secondary;
+                    font-weight: 500;
+                }
+                
+                .form-help {
+                    font-size: 0.85rem;
+                    color: lighten(variable.$color-2, 30%);
+                    margin-top: 0.4rem;
+                    font-family: variable.$font-secondary;
+                }
+            }
+        }
+        
+        .register-button {
+            width: 100%;
+            background: linear-gradient(135deg, 
+                variable.$color-2 0%, 
+                darken(variable.$color-2, 8%) 50%,
+                darken(variable.$color-2, 15%) 100%);
+            color: white;
+            border: none;
+            padding: 1.3rem 2rem;
+            font-family: variable.$font-primary;
+            font-weight: variable.$font-weight-bold;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, 
+                    transparent, 
+                    rgba(255, 255, 255, 0.3), 
+                    transparent);
+                transition: left 0.6s ease;
+            }
+            
+            &::after {
+                content: '✨';
+                position: absolute;
+                right: 1.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+            
+            &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(55, 65, 81, 0.4);
+                background: linear-gradient(135deg, 
+                    lighten(variable.$color-2, 5%) 0%, 
+                    variable.$color-2 50%,
+                    darken(variable.$color-2, 10%) 100%);
+                
+                &::before {
+                    left: 100%;
+                }
+                
+                &::after {
+                    opacity: 1;
+                    transform: translateY(-50%) scale(1.2);
+                }
+            }
+            
+            &:active {
+                transform: translateY(-1px);
+            }
+        }
+        
+        .register-footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(90, 90, 90, 0.1);
+            
+            p {
+                color: lighten(variable.$color-2, 20%);
+                font-family: variable.$font-secondary;
+                margin-bottom: 1rem;
+            }
+            
+            a {
+                color: variable.$color-2;
+                text-decoration: none;
+                font-weight: variable.$font-weight-bold;
+                transition: all 0.3s ease;
+                position: relative;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: variable.$color-2;
+                    transition: width 0.3s ease;
+                }
+                
+                &:hover {
+                    color: darken(variable.$color-2, 15%);
+                    
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes floatingShapes {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(120deg); }
+    66% { transform: translateY(-30px) rotate(240deg); }
+}
+
+@keyframes underlineGlow {
+    0%, 100% { opacity: 1; transform: translateX(-50%) scaleX(1); }
+    50% { opacity: 0.7; transform: translateX(-50%) scaleX(1.1); }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .register-page {
+        padding: 1rem;
+        
+        .register-container {
+            padding: 2.5rem 1.5rem;
+            
+            .register-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .register-page {
+        .register-container {
+            padding: 2rem 1rem;
+            
+            .register-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}

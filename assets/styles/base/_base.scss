@@ -7,11 +7,13 @@
 body {
     margin: 0px auto;
     font-family: variable.$font-primary;
-    background-color: variable.$color-1;
+    background-color: variable.$color-3; 
+    color: variable.$color-2; 
+    line-height: 1.6;
 }
 
 section {
-    margin-top: 4rem;
+    margin-top: 6rem;
 }
 
 img {
@@ -23,6 +25,7 @@ img {
 h1, h2, h3 {
     margin: 0;
     font-family: variable.$font-secondary;
+    color: variable.$color-2; 
 }
 
 ul {
@@ -32,4 +35,5 @@ ul {
 
 a {
     text-decoration: none;
+    color: variable.$color-2; 
 }

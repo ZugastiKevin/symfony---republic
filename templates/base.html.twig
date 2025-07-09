@@ -19,33 +19,42 @@
     </head>
     <body>
         <header id="header">
-            <div id="french-flag" class="french-flag">
-                <div class="flag-stripe flag-stripe--blue"></div>
-                <div class="flag-stripe flag-stripe--white"></div>
-                <div class="flag-stripe flag-stripe--red"></div>
-            </div>
-        <nav class="navbar">
-            <ul class="links-container">
-                <li class="nav-items"><a href="{{ path('home') }}" data-i18n="nav_home" ></a></li>
-                <li class="nav-items"><a href="" data-i18n="nav_lorem" >Quia.</a></li>
-                <li class="nav-items"><a href="{{ path('mini_games')}}" data-i18n="nav_minigames" >Je teste mes compétences</a></li>
-                <li class="nav-items"><a href="" data-i18n="nav_ipsum">Expedita!</a></li>
-                <li class="nav-items"><a href="" data-i18n="nav_dolor">Libero.</a></li>
-            {% if app.user %}
-                <li><a href="{{ path('app_logout') }}" class="menu-items" data-i18n="nav_disconnect"> Se déconnecter</a></li>
-            {% else %}
-                <li><a href="{{ path('create_user') }}" class="menu-items" data-i18n="nav_register"> S'inscrire</a></li>
-                <li><a href="{{ path('app_login') }}" class="menu-items" data-i18n="nav_connect"> Se connecter</a></li>
-            {% endif %}
-            </ul>
-            <div class="lang-switcher">
-                <button class="lang-toggle">Français ⌄</button>
-                <ul class="lang-options">
-                    <li data-lang="fr">Français</li>
-                    <li data-lang="en">English</li>
+            <nav class="navbar">
+                <!-- Logo avec drapeau français -->
+                <div class="navbar-logo">
+                    <a href="{{ path('home') }}" class="logo-link">
+                        <div id="french-flag" class="french-flag logo-flag">
+                            <div class="flag-stripe flag-stripe--blue"></div>
+                            <div class="flag-stripe flag-stripe--white"></div>
+                            <div class="flag-stripe flag-stripe--red"></div>
+                        </div>
+                        <span class="logo-text" data-i18n="nav_home">République</span>
+                    </a>
+                </div>
+                
+                <!-- Navigation principale -->
+                <ul class="links-container">
+                    <li class="nav-items"><a href="{{ path('create_quiz') }}" data-i18n="nav_Quiz">Quiz</a></li>
+                    <li class="nav-items"><a href="{{ path('mini_games')}}" data-i18n="nav_minigames">Je teste mes compétences</a></li>
+                    <li class="nav-items"><a href="" data-i18n="nav_ipsum">Expedita!</a></li>
+                    <li class="nav-items"><a href="" data-i18n="nav_dolor">Libero.</a></li>
+                {% if app.user %}
+                    <li class="nav-items"><a href="{{ path('app_logout') }}" class="menu-items" data-i18n="nav_disconnect">Se déconnecter</a></li>
+                {% else %}
+                    <li class="nav-items"><a href="{{ path('create_user') }}" class="menu-items" data-i18n="nav_register">S'inscrire</a></li>
+                    <li class="nav-items"><a href="{{ path('app_login') }}" class="menu-items" data-i18n="nav_connect">Se connecter</a></li>
+                {% endif %}
                 </ul>
-            </div>
-        </nav>
+                
+                <!-- Sélecteur de langue -->
+                <div class="lang-switcher">
+                    <button class="lang-toggle">Français ⌄</button>
+                    <ul class="lang-options">
+                        <li data-lang="fr">Français</li>
+                        <li data-lang="en">English</li>
+                    </ul>
+                </div>
+            </nav>
         </header>
         <main>
             {% block body %}{% endblock %}
@@ -55,25 +64,4 @@
     <footer class="footer">
     
     </footer>
-    <style>
-.lang-switcher {
-    position: relative;
-    display: inline-block;
-    z-index: 200;
-}
-.lang-options {
-    display: none;
-    position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    z-index: 300;
-    margin-top: 5px;
-    min-width: 120px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    right: 5;
-}
-.lang-switcher.open .lang-options {
-    display: block;
-}
-    </style>
 </html>

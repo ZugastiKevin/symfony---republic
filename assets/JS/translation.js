@@ -7,6 +7,23 @@ window.translations = {
     nav_disconnect: 'Se déconnecter',
     nav_connect: 'Se connecter',
     nav_register: 'S\'inscrire',
+    nav_quiz: 'Quiz',
+
+    // Traductions pour la page de connexion
+    login_title: 'Connexion',
+    login_subtitle: 'Accédez au site.',
+    login_email: 'Email',
+    login_password: 'Mot de passe',
+    login_submit: 'Se connecter',
+    login_no_account: 'Pas encore de compte ?',
+    login_register_link: 'Créer un compte',
+
+    // Traductions pour la page d'inscription
+    register_title: 'Bienvenue !',
+    register_subtitle: 'Créez votre compte.',
+    register_submit: 'Créer mon compte',
+    register_have_account: 'Déjà un compte ?',
+    register_login_link: 'Se connecter',
 
     // section traduction des minijeux 
     minigames_1_title: 'Relie le mot à sa définition',
@@ -23,16 +40,16 @@ window.translations = {
     minigames_word_devise: "Devise",
     minigames_word_constitution: "Constitution",
 
-    minigames_def_liberte: "Droit de faire ce que l’on veut dans le respect de la loi et d’autrui.",
+    minigames_def_liberte: "Droit de faire ce que l'on veut dans le respect de la loi et d'autrui.",
     minigames_def_egalite: "Principe selon lequel tous les citoyens ont les mêmes droits et devoirs.",
     minigames_def_fraternite: "Solidarité et entraide entre les citoyens.",
-    minigames_def_laicite: "Principe de séparation des religions et de l’État.",
+    minigames_def_laicite: "Principe de séparation des religions et de l'État.",
     minigames_def_citoyen: "Personne qui appartient à un pays et qui a des droits et des devoirs.",
     minigames_def_republique: "Régime politique où le pouvoir appartient au peuple et où les dirigeants sont élus.",
     minigames_def_democratie: "Système où le peuple participe aux décisions par le vote.",
-    minigames_def_droit: "Règle qui fixe ce que l’on peut faire ou ne pas faire.",
-    minigames_def_devise: "Phrase courte qui exprime les valeurs d’un pays.",
-    minigames_def_constitution: "Texte qui organise le fonctionnement de l’État et fixe les droits des citoyens.",
+    minigames_def_droit: "Règle qui fixe ce que l'on peut faire ou ne pas faire.",
+    minigames_def_devise: "Phrase courte qui exprime les valeurs d'un pays.",
+    minigames_def_constitution: "Texte qui organise le fonctionnement de l'État et fixe les droits des citoyens.",
     minigames_1_restart: "Recommencer le jeu",
     minigames_1_label: "Mots :",
     minigames_1_def_label: "Définitions :",
@@ -57,6 +74,23 @@ window.translations = {
     nav_disconnect: 'Disconnect',
     nav_connect: 'Connect',
     nav_register: 'Register',
+    nav_quiz: 'Quiz',
+
+    // English translations for login page
+    login_title: 'Login',
+    login_subtitle: 'Go to the website.',
+    login_email: 'Email',
+    login_password: 'Password',
+    login_submit: 'Sign in',
+    login_no_account: 'Don\'t have an account yet?',
+    login_register_link: 'Create an account',
+
+    // English translations for registration page
+    register_title: 'Welcome !',
+    register_subtitle: 'Create your account.',
+    register_submit: 'Create my account',
+    register_have_account: 'Already have an account?',
+    register_login_link: 'Sign in',
 
     minigames_1_title: 'Match the word to its definition',
     minigames_1_subtitle: 'Drag each word to the correct definition!',
@@ -95,7 +129,7 @@ window.translations = {
     vf_bad: "Wrong answer.",
     vf_score: "Score",
     minigames_2_true: "True",
-    minigames_2_false: "Talse",
+    minigames_2_false: "False",
     minigames_2_title: "True or False",
     minigames_2_next: "Next question",
   }

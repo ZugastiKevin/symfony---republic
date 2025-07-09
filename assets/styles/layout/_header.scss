@@ -1,41 +1,514 @@
 @use "../abstracts/variables" as variable;
 
-@keyframes dropdown-show {
-    0% {
-        opacity: 0;
-    };
-    100% {
-        opacity: 1;
-    };
-};
-
-@keyframes dropdown-dont-show {
-    0% {
-        opacity: 1;
-    };
-    100% {
-        opacity: 0;
-    };
-};
-
 #header {
+    // Fond plus foncé pour contraster avec le texte blanc
+    background: linear-gradient(135deg, 
+        variable.$color-2 0%, 
+        darken(variable.$color-2, 15%) 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 3px solid darken(variable.$color-2, 10%);
+    transition: all 0.3s ease;
     
-}
+    &.scrolled {
+        display: flex;
+        align-self: center;
+        opacity: 0.95; 
+        width: 90%;
+        margin: 0px 5%;
+        margin-top: 0%; 
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        background: linear-gradient(135deg, 
+            rgba(55, 65, 81, 0.9) 0%, 
+            rgba(31, 41, 55, 0.9) 100%);
+        transition: all 0.3s ease;
+    }
 
-@media screen and (min-width:1921px) {  
-    #header {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        position: relative;
         
+        // Logo avec drapeau français
+        .navbar-logo {
+            .logo-link {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                text-decoration: none;
+                padding: 0.5rem;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    background: rgba(255, 255, 255, 0.1);
+                    transform: translateY(-2px);
+                    
+                    .logo-flag {
+                        transform: scale(1.1);
+                        
+                        .flag-stripe {
+                            animation-duration: 2s !important;
+                        }
+                    }
+                    
+                    .logo-text {
+                        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                    }
+                }
+                
+                .logo-flag {
+                    width: 45px;
+                    height: 30px;
+                    display: flex;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    box-shadow: 
+                        0 3px 12px rgba(0, 0, 0, 0.2),
+                        0 1px 4px rgba(0, 0, 0, 0.1);
+                    transition: all 0.3s ease;
+                    position: relative;
+                    
+                    // Supprime les animations de position fixe pour le logo
+                    position: static !important;
+                    top: auto !important;
+                    right: auto !important;
+                    animation: none !important;
+                    
+                    .flag-stripe {
+                        flex: 1;
+                        position: relative;
+                        
+                        &--blue {
+                            background: linear-gradient(135deg, #0055A4 0%, #003d7a 50%, #0055A4 100%);
+                            animation: logoWaveBlue 4s ease-in-out infinite;
+                        }
+                        
+                        &--white {
+                            background: linear-gradient(135deg, #FFFFFF 0%, #f5f5f5 50%, #FFFFFF 100%);
+                            animation: logoWaveWhite 4.2s ease-in-out infinite 0.3s;
+                        }
+                        
+                        &--red {
+                            background: linear-gradient(135deg, #EF4135 0%, #c0392b 50%, #EF4135 100%);
+                            animation: logoWaveRed 4.5s ease-in-out infinite 0.6s;
+                        }
+                    }
+                }
+                
+                .logo-text {
+                    color: white; // Reste blanc car fond sombre
+                    font-family: variable.$font-primary;
+                    font-weight: variable.$font-weight-bold;
+                    font-size: 1.3rem;
+                    letter-spacing: 0.5px;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+        
+        .links-container {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 0;
+            align-items: center;
+            
+            .nav-items {
+                position: relative;
+                
+                a {
+                    display: block;
+                    padding: 1rem 1.5rem;
+                    color: white; // Reste blanc car fond sombre
+                    text-decoration: none;
+                    font-family: variable.$font-primary;
+                    font-weight: variable.$font-weight-regular;
+                    font-size: 1rem;
+                    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    position: relative;
+                    overflow: hidden;
+                    
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(90deg, 
+                            transparent 0%, 
+                            rgba(255, 255, 255, 0.2) 50%, 
+                            transparent 100%);
+                        transition: left 0.5s ease;
+                    }
+                    
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 50%;
+                        width: 0;
+                        height: 3px;
+                        background: linear-gradient(90deg, #0055A4, #FFFFFF, #EF4135);
+                        transform: translateX(-50%);
+                        transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    }
+                    
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.15);
+                        color: white;
+                        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                        
+                        &::before {
+                            left: 100%;
+                        }
+                        
+                        &::after {
+                            width: 100%;
+                        }
+                    }
+                    
+                    &:active {
+                        transform: translateY(1px);
+                    }
+                    
+                    // Styles spéciaux pour les boutons inscription/connexion
+                    &.menu-items {
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 25px;
+                        margin-left: 0.5rem;
+                        padding: 0.8rem 1.2rem;
+                        font-weight: variable.$font-weight-bold;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        
+                        // GARDE les animations hover normales ET ajoute les effets spéciaux
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.25);
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                            
+                            // Garde les animations normales
+                            &::before {
+                                left: 100%;
+                            }
+                            
+                            &::after {
+                                width: 100%;
+                            }
+                        }
+                        
+                        // Les pseudo-éléments fonctionnent aussi pour les boutons
+                        &::before {
+                            border-radius: 25px; // Adapte au border-radius du bouton
+                        }
+                        
+                        &::after {
+                            bottom: 2px; // Ajuste la position pour les boutons arrondis
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Sélecteur de langue stylé
+        .lang-switcher {
+            position: relative;
+            z-index: 200;
+            
+            .lang-toggle {
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 25px;
+                padding: 0.8rem 1.2rem;
+                color: white; // Reste blanc car fond sombre
+                font-family: variable.$font-primary;
+                font-weight: variable.$font-weight-regular;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                position: relative;
+                overflow: hidden;
+                
+                // Ajoute les mêmes animations que les autres liens
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, 
+                        transparent 0%, 
+                        rgba(255, 255, 255, 0.2) 50%, 
+                        transparent 100%);
+                    transition: left 0.5s ease;
+                    border-radius: 25px;
+                }
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 2px;
+                    left: 50%;
+                    width: 0;
+                    height: 3px;
+                    background: linear-gradient(90deg, #0055A4, #FFFFFF, #EF4135);
+                    transform: translateX(-50%);
+                    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    border-radius: 2px;
+                }
+                
+                &:hover {
+                    background: rgba(255, 255, 255, 0.25);
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                    
+                    &::before {
+                        left: 100%;
+                    }
+                    
+                    &::after {
+                        width: 80%;
+                    }
+                }
+                
+                &:active {
+                    transform: translateY(0);
+                }
+            }
+            
+            .lang-options {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                min-width: 140px;
+                margin-top: 0.5rem;
+                overflow: hidden;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                z-index: 300;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                
+                li {
+                    padding: 1rem 1.2rem;
+                    margin: 0;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    color: variable.$color-2; // Texte foncé sur fond blanc
+                    font-family: variable.$font-primary;
+                    position: relative;
+                    overflow: hidden;
+                    
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 3px;
+                        height: 100%;
+                        background: linear-gradient(180deg, #0055A4, #FFFFFF, #EF4135);
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    }
+                    
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                    
+                    &:hover {
+                        background: variable.$color-1; // Fond gris clair au hover
+                        transform: translateX(5px);
+                        
+                        &::before {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            
+            &.open .lang-options {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
     }
 }
 
-@media screen and (max-width:1250px) {  
-    #header {
-        
+// Reste des animations identiques...
+@keyframes logoWaveBlue {
+    0%, 100% { 
+        transform: scaleY(1) rotateY(0deg);
+    }
+    25% { 
+        transform: scaleY(1.02) rotateY(1deg);
+    }
+    50% { 
+        transform: scaleY(0.98) rotateY(-0.5deg);
+    }
+    75% { 
+        transform: scaleY(1.01) rotateY(0.5deg);
     }
 }
 
-@media screen and (max-width:768px) {  
+@keyframes logoWaveWhite {
+    0%, 100% { 
+        transform: scaleY(1) translateY(0px);
+    }
+    20% { 
+        transform: scaleY(1.01) translateY(-0.5px);
+    }
+    40% { 
+        transform: scaleY(0.99) translateY(0.3px);
+    }
+    60% { 
+        transform: scaleY(1.005) translateY(-0.2px);
+    }
+    80% { 
+        transform: scaleY(0.995) translateY(0.1px);
+    }
+}
+
+@keyframes logoWaveRed {
+    0%, 100% { 
+        transform: scaleY(1) rotateY(0deg);
+    }
+    30% { 
+        transform: scaleY(0.99) rotateY(-0.8deg);
+    }
+    60% { 
+        transform: scaleY(1.01) rotateY(1deg);
+    }
+    90% { 
+        transform: scaleY(0.995) rotateY(-0.3deg);
+    }
+}
+
+// Responsive identique...
+@media screen and (max-width: 1250px) {  
     #header {
-        
+        .navbar {
+            padding: 1rem 1.5rem;
+            
+            .navbar-logo .logo-link {
+                .logo-flag {
+                    width: 40px;
+                    height: 27px;
+                }
+                
+                .logo-text {
+                    font-size: 1.2rem;
+                }
+            }
+            
+            .links-container {
+                gap: 0;
+                
+                .nav-items a {
+                    padding: 0.8rem 1rem;
+                    font-size: 0.95rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {  
+    #header {
+        .navbar {
+            flex-direction: column;
+            padding: 1rem;
+            gap: 1rem;
+            
+            .navbar-logo .logo-link {
+                .logo-flag {
+                    width: 35px;
+                    height: 23px;
+                }
+                
+                .logo-text {
+                    font-size: 1.1rem;
+                }
+            }
+            
+            .links-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+                
+                .nav-items {
+                    a {
+                        padding: 0.6rem 1rem;
+                        font-size: 0.9rem;
+                        
+                        &.menu-items {
+                            margin-left: 0;
+                            margin-top: 0.5rem;
+                        }
+                    }
+                }
+            }
+            
+            .lang-switcher {
+                .lang-toggle {
+                    padding: 0.6rem 1rem;
+                    font-size: 0.9rem;
+                }
+                
+                .lang-options {
+                    right: 50%;
+                    transform: translateX(50%) translateY(-10px);
+                    
+                    &.open {
+                        transform: translateX(50%) translateY(0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #header {
+        .navbar {
+            .links-container {
+                flex-direction: column;
+                width: 100%;
+                
+                .nav-items {
+                    width: 100%;
+                    text-align: center;
+                    
+                    a {
+                        padding: 1rem;
+                        border-radius: 8px;
+                        margin: 0.2rem 0;
+                    }
+                }
+            }
+            
+            .lang-switcher {
+                margin-top: 1rem;
+            }
+        }
     }
 }

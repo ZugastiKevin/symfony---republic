@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const rotateY = Math.sin(scrollY * 0.005) * 2;
         
         
-        const maxScale = 0.9; // size max de l'augmentation quand on scroll
+        const maxScale = 1.1; // size max de l'augmentation quand on scroll
         const scale = Math.min(0.6 + (scrollY / 2000), maxScale); // augmentation progressive
         
         flag.style.transform = `
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // augmentation de la taille du drapeau pour aider a la simulation du vent.
     function naturalBreathing() {
         const time = Date.now() * 0.0008; 
-        const breathScale = 0.8 + Math.sin(time) * 0.02; 
+        const breathScale = 1 + Math.sin(time) * 0.02; 
         const breathRotate = Math.cos(time * 1.3) * 0.5;
         
         if (!flag.style.transition) {
