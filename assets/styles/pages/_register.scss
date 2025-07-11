@@ -2,7 +2,7 @@
 
 .register-page {
     min-height: 100vh;
-    max-height: 100vh; // Désactive le scroll
+    max-height: 120vh; // Désactive le scroll
     overflow: hidden;
     background: linear-gradient(135deg, 
         variable.$color-3 0%, 

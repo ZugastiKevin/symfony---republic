@@ -2,6 +2,7 @@ $font-primary: "Spectral", serif;
 $font-secondary: "Roboto", serif;
 
 $font-weight-regular: 400;
+$font-weight-medium: 500;
 $font-weight-bold: 700;
 
 // Palette République française moderne avec fond gris
@@ -9,4 +10,5 @@ $color-1: #F3F4F6;  // Gris très clair (pour éléments secondaires/cartes)
 $color-2: #374151;  // Gris foncé pour les textes
 $color-3: #E5E7EB;  // Gris clair (fond principal du site)
 $color-4: #6B7280;  // Gris moyen (pour textes secondaires)
+$color-5: #6c757d; // Gris moyen pour les textes secondaires/détails
 $color-overlay: rgba(0, 0, 0, 0.5);

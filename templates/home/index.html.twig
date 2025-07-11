@@ -1,20 +1,212 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}République - Apprendre et comprendre nos valeurs{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<main id="home">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title" data-i18n="home_hero_title"></h1>
+                <p class="hero-subtitle" data-i18n="home_hero_subtitle"></p>
+                <div class="hero-actions">
+                    <a href="{{ path('mini_games') }}" class="cta-primary" data-i18n="home_cta_games"></a>
+                    <a href="#histoire" class="cta-secondary" data-i18n="home_cta_discover"></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="republic-emblem">
+                    <div class="emblem-circle">
+                        <div class="french-flag-large">
+                            <div class="flag-stripe flag-stripe--blue"></div>
+                            <div class="flag-stripe flag-stripe--white"></div>
+                            <div class="flag-stripe flag-stripe--red"></div>
+                        </div>
+                        <div class="emblem-text">RF</div>
+                    </div>
+                    <div class="emblem-motto" data-i18n="home_motto"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave"></div>
+    </section>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="home_features_title"></h2>
+            <p class="section-subtitle" data-i18n="home_features_subtitle"></p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 data-i18n="home_feature_games_title"></h3>
+                    <p data-i18n="home_feature_games_desc"></p>
+                    <a href="{{ path('mini_games') }}" class="feature-link" data-i18n="home_feature_games_link"></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 data-i18n="home_feature_quiz_title"></h3>
+                    <p data-i18n="home_feature_quiz_desc"></p>
+                    {# <a href="{{ path('quiz') }}" class="feature-link" data-i18n="home_feature_quiz_link"></a> #}
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3 data-i18n="home_feature_history_title"></h3>
+                    <p data-i18n="home_feature_history_desc"></p>
+                    <a href="#histoire" class="feature-link" data-i18n="home_feature_history_link"></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/html/republic/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/var/www/html/republic/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+    <!-- History Timeline Section -->
+    <section id="histoire" class="history-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="home_history_title"></h2>
+            <p class="section-subtitle" data-i18n="home_history_subtitle"></p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1789</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="home_timeline_1789_title"></h3>
+                        <p data-i18n="home_timeline_1789_desc"></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1792</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="home_timeline_1792_title"></h3>
+                        <p data-i18n="home_timeline_1792_desc"></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1848</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="home_timeline_1848_title"></h3>
+                        <p data-i18n="home_timeline_1848_desc"></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1870</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="home_timeline_1870_title"></h3>
+                        <p data-i18n="home_timeline_1870_desc"></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1946</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="home_timeline_1946_title"></h3>
+                        <p data-i18n="home_timeline_1946_desc"></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item active">
+                    <div class="timeline-date">1958</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="home_timeline_1958_title"></h3>
+                        <p data-i18n="home_timeline_1958_desc"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="home_values_title"></h2>
+            <p class="section-subtitle" data-i18n="home_values_subtitle"></p>
+            
+            <div class="values-grid">
+                <div class="value-card liberte">
+                    <div class="value-icon">🕊️</div>
+                    <h3 data-i18n="home_value_liberte_title"></h3>
+                    <p data-i18n="home_value_liberte_desc"></p>
+                    <div class="value-detail" data-i18n="home_value_liberte_detail"></div>
+                </div>
+                
+                <div class="value-card egalite">
+                    <div class="value-icon">⚖️</div>
+                    <h3 data-i18n="home_value_egalite_title"></h3>
+                    <p data-i18n="home_value_egalite_desc"></p>
+                    <div class="value-detail" data-i18n="home_value_egalite_detail"></div>
+                </div>
+                
+                <div class="value-card fraternite">
+                    <div class="value-icon">🤝</div>
+                    <h3 data-i18n="home_value_fraternite_title"></h3>
+                    <p data-i18n="home_value_fraternite_desc"></p>
+                    <div class="value-detail" data-i18n="home_value_fraternite_detail"></div>
+                </div>
+                
+                <div class="value-card laicite">
+                    <div class="value-icon">🏛️</div>
+                    <h3 data-i18n="home_value_laicite_title"></h3>
+                    <p data-i18n="home_value_laicite_desc"></p>
+                    <div class="value-detail" data-i18n="home_value_laicite_detail"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institutions Section -->
+    <section id="institutions" class="institutions-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="home_institutions_title"></h2>
+            <p class="section-subtitle" data-i18n="home_institutions_subtitle"></p>
+            
+            <div class="institutions-grid">
+                <div class="institution-card">
+                    <div class="institution-icon">🏛️</div>
+                    <h3 data-i18n="home_institution_president_title"></h3>
+                    <p data-i18n="home_institution_president_desc"></p>
+                </div>
+                
+                <div class="institution-card">
+                    <div class="institution-icon">🏢</div>
+                    <h3 data-i18n="home_institution_government_title"></h3>
+                    <p data-i18n="home_institution_government_desc"></p>
+                </div>
+                
+                <div class="institution-card">
+                    <div class="institution-icon">📋</div>
+                    <h3 data-i18n="home_institution_assembly_title"></h3>
+                    <p data-i18n="home_institution_assembly_desc"></p>
+                </div>
+                
+                <div class="institution-card">
+                    <div class="institution-icon">🏛️</div>
+                    <h3 data-i18n="home_institution_senate_title"></h3>
+                    <p data-i18n="home_institution_senate_desc"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-i18n="home_cta_title"></h2>
+                <p data-i18n="home_cta_description"></p>
+                <div class="cta-actions">
+                    <a href="{{ path('mini_games') }}" class="cta-primary large" data-i18n="home_cta_start"></a>
+                    {% if not app.user %}
+                    <a href="{{ path('create_user') }}" class="cta-secondary large" data-i18n="home_cta_register"></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}
